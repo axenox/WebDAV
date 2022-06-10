@@ -1,0 +1,23 @@
+{
+	"name" : "axenox/webdav",
+	"require" : {
+		"exface/core" : "^1.0",
+		"sabre/dav": "^4.3"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"\\axenox\\WebDAV\\" : ""
+		},
+		"exclude-from-classmap" : [
+			"/Config/",
+			"/Translations/",
+			"/Model/"
+		]
+	},
+	"extra" : {
+		"app" : {
+			"app_uid" : "0x11ec9467110ac95a9467025041000001",
+			"app_alias" : "axenox.WebDAV"
+		}
+	}
+}

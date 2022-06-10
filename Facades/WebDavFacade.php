@@ -16,20 +16,20 @@ use exface\Core\Interfaces\Model\MetaAttributeInterface;
 use Sabre\DAV;
 
 /**
- * Facade to allow access to server folders via WebDAV.
+ * This facade allows to access selected server folders via WebDAV.
  * 
  * To make a folder accessible via WebDAV, add a file called `axenox.WebDAV.config.json` 
  * to your `config` folder:
  * 
  * ```
  *  {
- *	 "FOLDERS": [
- *		{
- *			"URL": "test",
- *			"PATH": "vendor/exface/core",
- *			"SHOW_IN_BROWSER": true
- *		}
- *	 ]
+ *      "FOLDERS": [
+ *		    {
+ *			   "URL": "test",
+ *			   "PATH": "vendor/exface/core",
+ *			   "SHOW_IN_BROWSER": true
+ *		    }
+ *      ]
  *  }
  * 
  * ```
@@ -43,6 +43,14 @@ use Sabre\DAV;
  * - `SHOW_IN_BROWSER` will make the WebDAV URL accessible via browser and not only via
  * WebDAV client. It will basically render a web page representation if a browser is
  * detected.
+ * 
+ * ## Configuring WebDAV clients
+ * 
+ * ### Windows
+ * 
+ * Windows has built-in support for WebDAV. You can either mount the WebDAV share as a
+ * network folder or as a separate drive. Both options are described here in detail:
+ * https://help.dreamhost.com/hc/en-us/articles/216473357-Accessing-WebDAV-with-Windows
  * 
  * @author Andrej Kabachnik
  *

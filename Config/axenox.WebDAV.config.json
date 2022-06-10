@@ -1,0 +1,9 @@
+{
+	"FOLDERS": [
+		{
+			"URL": "test",
+			"PATH": "vendor/exface/core",
+			"SHOW_IN_BROWSER": true
+		}
+	]
+}

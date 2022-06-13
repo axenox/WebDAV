@@ -4,15 +4,10 @@ namespace axenox\WebDAV\Facades;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use exface\Core\Facades\AbstractHttpFacade\AbstractHttpFacade;
-use exface\Core\Facades\AbstractHttpFacade\NotFoundHandler;
-use exface\Core\Facades\AbstractHttpFacade\HttpRequestHandler;
-use exface\Core\Facades\AbstractHttpFacade\Middleware\AuthenticationMiddleware;
 use exface\Core\DataTypes\StringDataType;
 use exface\Core\DataTypes\FilePathDataType;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Uri;
-use exface\Core\Interfaces\Model\MetaObjectInterface;
-use exface\Core\Interfaces\Model\MetaAttributeInterface;
 use Sabre\DAV;
 
 /**
@@ -70,15 +65,10 @@ class WebDavFacade extends AbstractHttpFacade
     /**
      * 
      * {@inheritDoc}
-     * @see \Psr\Http\Server\RequestHandlerInterface::handle()
+     * @see \exface\Core\Facades\AbstractHttpFacade\AbstractHttpFacade::createResponse()
      */
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    protected function createResponse(ServerRequestInterface $request) : ResponseInterface
     {
-        $handler = new HttpRequestHandler(new NotFoundHandler());
-        
-        // Authenticate users
-        $handler->add(new AuthenticationMiddleware($this));
-        
         $uri = $request->getUri();
         $path = ltrim(StringDataType::substringAfter($uri->getPath(), $this->getUrlRouteDefault()), "/");
         $urlFolder = StringDataType::substringBefore($path, '/', $path);
